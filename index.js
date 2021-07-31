@@ -1,7 +1,9 @@
+const token = process.env['token'];
 const Discord = require('discord.js');
 const config = require('./config.json');
 const bot = new Discord.Client();
 const file = require('fs');
+const { keepAlive } = require('./server');
 
 const eventfolders = file.readdirSync('./events');
 for (const event of eventfolders) bot.on(event.split('.')[0], require(`./events/${event}`).bind(null, bot));
@@ -16,5 +18,7 @@ for (const folder of commandfolders) {
     }
 }
 
+keepAlive();
+
 //bot.login(config.devtoken);
-bot.login(config.token);
+bot.login(token);
