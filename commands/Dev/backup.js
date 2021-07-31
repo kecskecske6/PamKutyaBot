@@ -1,5 +1,6 @@
 const { MessageAttachment } = require('discord.js');
 const { getDate } = require('../../functions');
+const config = require('../../config.json');
 
 module.exports = {
     name: 'backup',
