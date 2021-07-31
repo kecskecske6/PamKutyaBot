@@ -8,6 +8,6 @@ module.exports = {
     category: 'Dev',
     execute(bot, msg) {
         if (!msg.member.roles.cache.get(config.roles.botmester)) return msg.channel.send('Nincs jogosultságod ezt a parancsot használni!');
-        msg.channel.send(new MessageAttachment('../../assets/users.json', `users-${getDate()}.json`));
+        msg.channel.send(new MessageAttachment('./assets/users.json', `users-${getDate()}.json`));
     }
 };
