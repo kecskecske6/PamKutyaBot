@@ -4,6 +4,7 @@ module.exports = {
     category: 'Dev',
     usage: '<parancs>',
     execute(bot, msg, args) {
+        if (!msg.member.roles.cache.get(config.roles.botmester)) return msg.channel.send('Nincs jogosultságod ezt a parancsot használni!');
         if (!args.length) return;
         const commandName = args[0].toLowerCase();
         const command = bot.commands.get(commandName) || bot.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));

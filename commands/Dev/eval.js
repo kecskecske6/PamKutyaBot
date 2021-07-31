@@ -9,6 +9,7 @@ module.exports = {
     category: 'Dev',
     usage: '<kód>',
     async execute(bot, msg) {
+        if (!msg.member.roles.cache.get(config.roles.botmester)) return msg.channel.send('Nincs jogosultságod ezt a parancsot használni!');
         try {
             let output = eval(msg.content.substring(5));
             if (typeof output !== 'string') output = inspect(output, { depth: 0 });

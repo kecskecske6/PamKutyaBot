@@ -1,7 +1,8 @@
 const Canvas = require('canvas');
 const users = require('../../assets/users.json');
-const { MessageAttachment, Message } = require('discord.js');
+const { MessageAttachment } = require('discord.js');
 const { findmember } = require('../../functions');
+const { registerFont } = require('canvas');
 
 function applyText(canvas, text) {
     const ctx = canvas.getContext('2d');
@@ -18,6 +19,7 @@ module.exports = {
     usage: '[felhasználó]',
     aliases: ['level', 'lvl'],
     async execute(bot, msg, args) {
+        registerFont('./Roboto/Roboto-Bold.ttf', { family: 'sans-serif' });
         let member = msg.member;
         if (args[0]) member = findmember(args[0], msg);
         if (!member) return msg.channel.send(':negative_squared_cross_mark: Nem találtam meg a megadott felhasználót!');
